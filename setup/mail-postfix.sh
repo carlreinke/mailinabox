@@ -81,6 +81,10 @@ tools/editconf.py /etc/postfix/main.cf -e \
 tools/editconf.py /etc/postfix/main.cf \
        smtpd_forbid_bare_newline=normalize
 
+# Add a less troublesome recipient delimiter.
+tools/editconf.py /etc/postfix/main.cf \
+	recipient_delimiter=+.
+
 # ### Outgoing Mail
 
 # Enable the 'submission' ports 465 and 587 and tweak their settings.

@@ -154,6 +154,10 @@ EOF
 tools/editconf.py /etc/dovecot/conf.d/15-lda.conf \
 	"postmaster_address=postmaster@$PRIMARY_HOSTNAME"
 
+# Add a less troublesome recipient delimiter.
+tools/editconf.py /etc/dovecot/conf.d/15-lda.conf \
+	recipient_delimiter=+.
+
 # ### Sieve
 
 # Enable the Dovecot sieve plugin which let's users run scripts that process
