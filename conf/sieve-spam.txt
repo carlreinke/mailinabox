@@ -1,7 +1,10 @@
-require ["regex", "fileinto", "imap4flags"];
+require ["fileinto"];
 
-if allof (header :regex "X-Spam-Status" "^Yes") {
-  fileinto "Spam";
+if header :is "X-Spam-Flag" "YES" {
+  if header :contains "X-Spam-Level" "***************" {
+    discard;
+  } else {
+    fileinto "Spam";
+  }
   stop;
 }
-
